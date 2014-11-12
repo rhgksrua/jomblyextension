@@ -21,8 +21,8 @@ chrome.browserAction.onClicked.addListener(function() {
 			createObj = {url: "http://www.jombly.com", active: false};
 
 			// Obj for execute Script. Code executes 
-			newObj = {code: "document.getElementById('playButton').click();"};
-			// newObj = {file: "inject.js"};
+			// newObj = {code: "document.getElementById('playButton').click();"};
+			newObj = {file: "inject.js"};
 			// Create tab.
 			chrome.tabs.create(createObj, function(tab) {
 				
