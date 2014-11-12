@@ -1,4 +1,5 @@
-notestuff
-=========
+Chrome Extension for Jombly
 
-Simple note extension for Chrome
+When jombly is open, clicking on extension button plays next song.
+
+When jombly is not open, jombly opens in a new tab and plays.
