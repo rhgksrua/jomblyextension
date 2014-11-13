@@ -65,7 +65,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	chrome.storage.sync.get({
 		notification: true
 	}, function (noti) {
-		console.log(noti.notification);
 		if (noti.notification === true) {
 			chrome.notifications.create(notiId, options, function() {});
 		}

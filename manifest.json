@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "Jombly Extension",
-    "description": "Jombply Chrome Extensions",
+    "description": "Chrome Extensions for Jombly",
     "version": "0.1",
     "permissions": [
         "storage", 
@@ -11,7 +11,7 @@
         "notifications"
     ],
     "browser_action": {
-        
+        "default_icon": "jombly_icon38.png"
     },
     "background": {
     	"persistent": false,
@@ -23,6 +23,11 @@
             "js": ["content_script.js"]
         }
     ],
-    "options_page": "options.html"
+    "options_page": "options.html",
+    "icons": {
+        "16": "jombly_icon16.png",
+        "48": "jombly_icon48.png",
+        "128": "jombly_icon128.png"
+    }
 
 }

@@ -6,6 +6,7 @@ Enable/Disable notification
 
 */
 
+// Load saved options.  Notification is enabled by default.
 document.addEventListener('DOMContentLoaded', function() {
 	chrome.storage.sync.get({
 		notification: true
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
+// Save user pref.
 document.getElementById('show').addEventListener('change', function() {
 	var checked = this.checked;
 	chrome.storage.sync.set({
