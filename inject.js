@@ -9,6 +9,20 @@ always.
 */
 setTimeout(function() {
 
-	document.getElementById('playButton').click();
+	/*
 	
+	var title = document.getElementById('title');
+	console.log(title);
+	var songInfo = {
+		title: title.textContent,
+	}
+
+	console.log('sending first');
+	chrome.runtime.sendMessage(songInfo, function(response) {
+		// Optional callback function
+		console.log('sent');
+	});
+*/
+	document.getElementById('playButton').click();
+
 }, 3000);

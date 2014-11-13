@@ -46,6 +46,7 @@ but not implemented.
 
 */
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+
 	var notiId = "jom";
 	var options = {
 		type: "basic",
@@ -55,18 +56,40 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		priority: 0
 	}
 
-	// Need to clear notification or notification will stay hidden unless
-	// user looks for it in the taskbar.
-	chrome.notifications.clear(notiId, function(cleared) {
-		// cleared is true if notification exists, or false if not.
-	});
 	
 	// Check options.  Default noti.notification is true.
 	chrome.storage.sync.get({
 		notification: true
 	}, function (noti) {
 		if (noti.notification === true) {
-			chrome.notifications.create(notiId, options, function() {});
+
+			// Each notification has a random id.
+			chrome.notifications.create(makeNotificationId(), options, function(id) {
+				setTimeout(function() {
+					chrome.notifications.clear(id, function(cleared) {});
+				}, 5000)
+			});
+
 		}
 	});
 });
+
+/*
+
+Creates a random notificatoin id for each song
+
+This allows notification to stack on top of eachother if track is skipped
+before notification clear is executed.  Also, clearing notification only
+applies to specific notification.
+
+*/
+function makeNotificationId()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i = 0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}

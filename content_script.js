@@ -2,6 +2,8 @@
 
 content_script.js is injected to jombly.  It listens for change in
 the title of the song and sends title and artwork to the extension.
+The value for manifest content_scripts run_at is document end.
+This is a workaround to show notification for the first track playing.
 
 */
 
@@ -14,7 +16,7 @@ Using WebKitMutationObserver to detect when song changes.
 
 */
 var obs = new WebKitMutationObserver(function(mutation) {
-
+	console.log('change detected');
 	var songInfo = {
 		title: title.textContent,
 		artwork: artwork
