@@ -2,14 +2,27 @@
     "manifest_version": 2,
 
     "name": "Jombly Extension",
-    "description": "Skip to next song",
+    "description": "Jombply Chrome Extensions",
     "version": "0.1",
-    "permissions": ["tabs", "http://www.jombly.com/*"],
+    "permissions": [
+        "storage", 
+        "tabs", 
+        "http://www.jombly.com/*", 
+        "notifications"
+    ],
     "browser_action": {
         
     },
     "background": {
     	"persistent": false,
-    	"scripts": ["content.js"]
-    }
+    	"scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://www.jombly.com/*"],
+            "js": ["content_script.js"]
+        }
+    ],
+    "options_page": "options.html"
+
 }
