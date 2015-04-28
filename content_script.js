@@ -7,8 +7,7 @@ This is a workaround to show notification for the first track playing.
 
 */
 
-var title = document.getElementById('title');
-var artwork = document.getElementById('container').style.backgroundImage.slice(4, -1);
+var title = document.getElementById('songInfo');
 
 /* 
 
@@ -16,10 +15,8 @@ Using WebKitMutationObserver to detect when song changes.
 
 */
 var obs = new WebKitMutationObserver(function(mutation) {
-	console.log('change detected');
 	var songInfo = {
 		title: title.textContent,
-		artwork: artwork
 	}
 	chrome.runtime.sendMessage(songInfo, function(response) {
 		// Optional callback function

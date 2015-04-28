@@ -29,7 +29,7 @@ chrome.browserAction.onClicked.addListener(function() {
 		
 		// Jombly is open and clicking on browser action plays next song.
 		} else {
-			existObj = {code: "document.getElementById('nextButton').click();"};
+			existObj = {code: "document.getElementById('next').click();"};
 			chrome.tabs.executeScript(tab[0].id, existObj, function() {
 				// Optional callback function
 			});
@@ -38,13 +38,11 @@ chrome.browserAction.onClicked.addListener(function() {
 
 });
 
-/*
-
-Add notification after song changes.  Currently Artwork cannot be displayed because
-content security policy.  There is a workaround using blob or data URL, 
-but not implemented.
-
-*/
+/**
+ *
+ * Add notification after song changes.
+ *
+ */
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 	var notiId = "jom";
@@ -74,15 +72,15 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	});
 });
 
-/*
-
-Creates a random notificatoin id for each song
-
-This allows notification to stack on top of eachother if track is skipped
-before notification clear is executed.  Also, clearing notification only
-applies to specific notification.
-
-*/
+/**
+ *
+ * Creates a random notificatoin id for each song
+ *
+ * This allows notification to stack on top of eachother if track is skipped
+ * before notification clear is executed.  Also, clearing notification only
+ * applies to specific notification.
+ *
+ */
 function makeNotificationId()
 {
     var text = "";
@@ -90,6 +88,5 @@ function makeNotificationId()
 
     for( var i = 0; i < 5; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
 }
